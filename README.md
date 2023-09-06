@@ -12,12 +12,12 @@ PHPoAuthLib provides oAuth support in PHP 7.2+ and is very easy to integrate wit
 
 Installation
 ------------
-This library can be found on [Packagist](https://packagist.org/packages/lusitanian/oauth).
+This library can be found on [Packagist](https://packagist.org/packages/jeroenvermeulen/oauth).
 The recommended way to install this is through [composer](http://getcomposer.org).
 
 
 ```bash
-    composer require lusitanian/oauth
+    composer require jeroenvermeulen/oauth
 ```
 
 Features
