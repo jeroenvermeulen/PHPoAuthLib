@@ -53,11 +53,7 @@ class Signature implements SignatureInterface
     {
         parse_str($uri->getQuery(), $queryStringData);
 
-        foreach (array_merge($queryStringData, $params) as $key => $value) {
-            $signatureData[rawurlencode($key)] = rawurlencode($value);
-        }
-
-        ksort($signatureData);
+        $signatureData = array_merge($queryStringData, $params);
 
         // determine base uri
         $baseUri = $uri->getScheme() . '://' . $uri->getRawAuthority();
@@ -70,7 +66,7 @@ class Signature implements SignatureInterface
 
         $baseString = strtoupper($method) . '&';
         $baseString .= rawurlencode($baseUri) . '&';
-        $baseString .= rawurlencode($this->buildSignatureDataString($signatureData));
+        $baseString .= http_build_query($signatureData, '', '&', PHP_QUERY_RFC3986);
 
         return base64_encode($this->hash($baseString));
     }
